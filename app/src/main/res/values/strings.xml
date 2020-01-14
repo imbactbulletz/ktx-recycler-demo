@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KTX Recycler Demo</string>
+    <string name="song_name_placeholder">Ghost \'n\' Stuff</string>
+    <string name="song_artist_placeholder">Deadmau5</string>
 </resources>
