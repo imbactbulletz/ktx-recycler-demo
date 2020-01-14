@@ -2,15 +2,27 @@ package com.example.ktxrecyclerdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.adapter.SongAdapter
+import com.example.decorator.VerticalSpaceItemDecorator
 import com.example.domain.Song
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initViewComponents()
+    }
 
-        val songList = createSongList()
+    private fun initViewComponents() {
+        recycler_activity_main_songs.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        val songAdapter = SongAdapter()
+        recycler_activity_main_songs.adapter = songAdapter
+        recycler_activity_main_songs.addItemDecoration(VerticalSpaceItemDecorator(resources.getDimension(R.dimen.vertical_spacing).toInt()))
+        songAdapter.submitList(createSongList())
     }
 
     fun createSongList(): List<Song> {
