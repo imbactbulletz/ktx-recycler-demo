@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Song
 import com.example.ktxrecyclerdemo.R
+import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.song_list_item.view.*
 
 class SongAdapter: ListAdapter<Song, SongAdapter.SongViewHolder>(SongAdapterDiffUtilItemCallback) {
@@ -20,16 +21,16 @@ class SongAdapter: ListAdapter<Song, SongAdapter.SongViewHolder>(SongAdapterDiff
         holder.onBind(getItem(position))
     }
 
-    inner class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun onBind(song: Song) {
-            // java equivalent of the lines below would be:
-            //
-            // TextView var2 = (TextView)var10000.findViewById(id.text_song_list_item_name);
-            // var2 = (TextView)var10000.findViewById(id.text_song_list_item_artist);
-            //
-            // piece of code above tells us that findViewById is called for all the views
-            // each time onBindViewHolder is called instead of retrieving it from the found views cache
+    inner class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), LayoutContainer {
+        override val containerView: View?
+        get() = itemView
 
+        fun onBind(song: Song) {
+            // In order to have found view cache generated, we need to implement LayoutContainer
+            // and assign a view as a containerView (root view) for the view holder.
+            // Although the found view cache will now be generated, it won't be used, since we are
+            // still accessing ktx properties indirectly, through an itemView reference.
+            // Therefore, findViewById will still be used, same as on master branch.
             itemView.text_song_list_item_name.text = song.name
             itemView.text_song_list_item_artist.text = song.artist
         }
