@@ -22,6 +22,14 @@ class SongAdapter: ListAdapter<Song, SongAdapter.SongViewHolder>(SongAdapterDiff
 
     inner class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun onBind(song: Song) {
+            // java equivalent of the lines below would be:
+            //
+            // TextView var2 = (TextView)var10000.findViewById(id.text_song_list_item_name);
+            // var2 = (TextView)var10000.findViewById(id.text_song_list_item_artist);
+            //
+            // piece of code above tells us that findViewById is called for all the views
+            // each time onBindViewHolder is called instead of retrieving it from the found views cache
+
             itemView.text_song_list_item_name.text = song.name
             itemView.text_song_list_item_artist.text = song.artist
         }
