@@ -40,6 +40,19 @@ class MainActivity : AppCompatActivity() {
         songList.add(Song("Alright  ", "Red Carpet"))
         songList.add(Song("Offshore", "Chicane"))
         songList.add(Song("Rej", "Ame"))
+        songList.add(Song("Bruised Water", "Chicane"))
+        songList.add(Song("Don't Give Up", "Chicane"))
+        songList.add(Song("What Am I Doing Here", "Chicane"))
+        songList.add(Song("Music Sounds Better With You", "Stardust"))
+        songList.add(Song("Lady", "Mojo"))
+        songList.add(Song("World Hold On", "Bob Sinclar"))
+        songList.add(Song("I Remember", "Deadmau5"))
+        songList.add(Song("Ghost 'n' Stuff", "Deadmau5"))
+        songList.add(Song("Granite", "Pendulum"))
+        songList.add(Song("Propane Nightmares", "Pendulum"))
+        songList.add(Song("Sounds Of Life", "Pendulum"))
+        songList.add(Song("Girl In The Fire", "Pendulum"))
+        songList.add(Song("9000 Miles", "Pendulum"))
         return songList
     }
 }
